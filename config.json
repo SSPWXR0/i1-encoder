@@ -5,6 +5,7 @@
     "username": "toor",
     "password": "i1root"
   },
+  "units": "m",
   "coop": {
     "locations": [
       "71866000",

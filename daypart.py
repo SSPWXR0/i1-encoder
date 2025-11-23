@@ -25,13 +25,13 @@ def fetch_tecci_coordinates(tecci_locations):
     conn.close()
     return coords
 
-def fetch_twc_daily_api(lat, lon, api_key):
-    url = f"https://api.weather.com/v3/wx/forecast/daily/10day?geocode={lat},{lon}&format=json&units=e&language=en-US&apiKey={api_key}"
+def fetch_twc_daily_api(lat, lon, api_key, units):
+    url = f"https://api.weather.com/v3/wx/forecast/daily/10day?geocode={lat},{lon}&format=json&units={units}&language=en-US&apiKey={api_key}"
     response = requests.get(url)
     response.raise_for_status()
     return response.json()
 
-def write_daypart_forecast_file(tecci_locations, api_key):
+def write_daypart_forecast_file(tecci_locations, api_key, units):
     # Calculate the base time for hardcoded timestamps
     Y, M, D, h, m, s, wd, jd, dst = time.localtime(time.time())
     dOffset = 0  # Always use offset of 0
@@ -111,7 +111,7 @@ def write_daypart_forecast_file(tecci_locations, api_key):
             sorted_locations = tecci_locations
         
         for tecci_id, lat, lon, county in sorted_locations:
-            data = fetch_twc_daily_api(lat, lon, api_key)
+            data = fetch_twc_daily_api(lat, lon, api_key, units)
             dayparts = data.get("daypart", {})[0].get("daypartName", [])
             phrases = data.get("daypart", {})[0].get("narrative", [])
             icons = data.get("daypart", {})[0].get("iconCodeExtend", [])
@@ -196,9 +196,10 @@ def write_daypart_forecast_file(tecci_locations, api_key):
 
 def main():
     config = load_config()
+    units = config.get("units", {})
     tecci_ids = config.get("coop", {}).get("locations", [])
     tecci_locations = fetch_tecci_coordinates(tecci_ids)
-    write_daypart_forecast_file(tecci_locations, api_key)
+    write_daypart_forecast_file(tecci_locations, api_key, units)
 
 if __name__ == "__main__":
     main()

@@ -67,9 +67,9 @@ def fetch_tecci_coordinates(tecci_locations):
         print(f"Error querying LFRecord DB: {e}")
         return []
 
-def fetch_twc_api(latitude, longitude, api_key):
+def fetch_twc_api(latitude, longitude, api_key, units):
     try:
-        url = f"https://api.weather.com/v1/geocode/{latitude}/{longitude}/observations/current.json?language=en-US&units=e&apiKey={api_key}"
+        url = f"https://api.weather.com/v1/geocode/{latitude}/{longitude}/observations/current.json?language=en-US&units={units}&apiKey={api_key}"
         response = requests.get(url)
         response.raise_for_status()
         return response.json()
@@ -77,7 +77,7 @@ def fetch_twc_api(latitude, longitude, api_key):
         print(f"Error fetching TWC API for {latitude}, {longitude}: {e}")
         return None
 
-def write_conditions_to_file(tecci_locations, api_key):
+def write_conditions_to_file(tecci_locations, api_key, units):
     # Generate current Unix timestamp
     current_timestamp = int(time.time())
     
@@ -89,7 +89,7 @@ def write_conditions_to_file(tecci_locations, api_key):
     
     with open(OUTPUT_FILE, "w") as f:
         for tecci_id, latitude, longitude, county in tecci_locations:
-            twc_data = fetch_twc_api(latitude, longitude, api_key)
+            twc_data = fetch_twc_api(latitude, longitude, api_key, units)
             if not twc_data or "observation" not in twc_data:
                 continue
 
@@ -115,9 +115,9 @@ def write_conditions_to_file(tecci_locations, api_key):
             f.write("    \n")
             f.write("twccommon.Log.info(\"i1DT - You are receiving IntelliStar 1 data from Rainwater WX.\")\n")
             f.write("    \n")
-            f.write("if (not areaList):\n")
-            f.write("    abortMsg()\n")
-            f.write("    \n")
+            #f.write("if (not areaList):\n")
+            #f.write("    abortMsg()\n")
+            #f.write("    \n")
             f.write("for area in areaList:\n")
             f.write("    b = twc.Data()\n")
             f.write(f"    b.skyCondition = {sky_condition}\n")
@@ -142,6 +142,8 @@ def main():
     config = load_config()
     if not config:
         return
+    
+    units = config.get("units", {})
 
     tecci_ids = config.get("tecci", {}).get("locations", [])
     if not tecci_ids:
@@ -153,7 +155,7 @@ def main():
         print("No matching tecci locations found in LFRecord DB.")
         return
 
-    write_conditions_to_file(tecci_locations, api_key)
+    write_conditions_to_file(tecci_locations, api_key, units)
 
 if __name__ == "__main__":
     main()

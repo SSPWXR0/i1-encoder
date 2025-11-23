@@ -33,9 +33,9 @@ def fetch_tecci_coordinates(tecci_locations):
         print(f"Error querying LFRecord DB: {e}")
         return []
 
-def fetch_twc_daily_api(latitude, longitude, api_key):
+def fetch_twc_daily_api(latitude, longitude, api_key, units):
     try:
-        url = f"https://api.weather.com/v3/wx/forecast/daily/10day?geocode={latitude},{longitude}&format=json&units=e&language=en-US&apiKey={api_key}"
+        url = f"https://api.weather.com/v3/wx/forecast/daily/10day?geocode={latitude},{longitude}&format=json&units={units}&language=en-US&apiKey={api_key}"
         response = requests.get(url)
         response.raise_for_status()
         return response.json()
@@ -43,7 +43,7 @@ def fetch_twc_daily_api(latitude, longitude, api_key):
         print(f"Error fetching TWC daily forecast API for {latitude}, {longitude}: {e}")
         return None
 
-def write_daily_forecast_file(tecci_locations, api_key):
+def write_daily_forecast_file(tecci_locations, api_key, units):
     with open(OUTPUT_FILE, "w") as f:
         f.write("\nimport twccommon\n")
         f.write("import time\n")
@@ -62,7 +62,7 @@ def write_daily_forecast_file(tecci_locations, api_key):
         f.write("keyTime = time.mktime((Y, M, D + dOffset, 0, 0, 0, 0, 0, -1))\n\n")
 
         for tecci_id, latitude, longitude, county in tecci_locations:
-            forecast_data = fetch_twc_daily_api(latitude, longitude, api_key)
+            forecast_data = fetch_twc_daily_api(latitude, longitude, api_key, units)
             print(forecast_data)
             if not forecast_data or "daypart" not in forecast_data:
                 break
@@ -101,6 +101,8 @@ def main():
     config = load_config()
     if not config:
         return
+    
+    units = config.get("units", {})
 
     tecci_ids = config.get("coop", {}).get("locations", [])
     if not tecci_ids:
@@ -112,7 +114,7 @@ def main():
         print("No matching tecci locations found in LFRecord DB.")
         return
 
-    write_daily_forecast_file(tecci_locations, api_key)
+    write_daily_forecast_file(tecci_locations, api_key, units)
 
 if __name__ == "__main__":
     main()

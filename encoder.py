@@ -16,7 +16,9 @@ import bulletin
 import radar
 
 with open("config.json", "r") as f:
-    ssh_config = json.load(f).get("ssh", {})
+    conf = json.load(f)
+    ssh_config = conf.get("ssh", {})
+    units_config = conf.get("units", {})
 
 ssh_connected = False
 ssh_client = None
@@ -114,6 +116,7 @@ def get_config():
     
     config_data = {
         "ssh": ssh_config,
+        "units": units_config,
         "coop": {"locations": remove_duplicates_preserve_order(locations)},
         "tecci": {"locations": remove_duplicates_preserve_order(locations_tecci)}
     }
