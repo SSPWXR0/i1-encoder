@@ -95,17 +95,19 @@ def write_conditions_to_file(tecci_locations, api_key, units):
 
             obs = twc_data["observation"]
 
+            unit_root = "imperial" if units == "e" else "metric"
+
             sky_condition = obs.get("icon_extd", 3200)
-            temp = obs.get("imperial", {}).get("temp", 67)
-            humidity = obs.get("imperial", {}).get("rh", 66)
-            dewpoint = obs.get("imperial", {}).get("dewpt", 51)
-            altimeter = obs.get("imperial", {}).get("altimeter", 29.67)
-            visibility = obs.get("imperial", {}).get("vis", 10.0)
+            temp = obs.get(unit_root, {}).get("temp", 67)
+            humidity = obs.get(unit_root, {}).get("rh", 66)
+            dewpoint = obs.get(unit_root, {}).get("dewpt", 51)
+            altimeter = obs.get(unit_root, {}).get("altimeter", 29.67)
+            visibility = obs.get(unit_root, {}).get("vis", 10.0)
             wdir_cardinal = obs.get("wdir_cardinal", "Calm")
             wind_direction = wind_direction_codes.get(wdir_cardinal, 0)
-            wind_speed = obs.get("imperial", {}).get("wspd", 0)
-            wind_gust = obs.get("imperial", {}).get("gust", 0)            
-            wind_chill = obs.get("imperial", {}).get("wc", temp)
+            wind_speed = obs.get(unit_root, {}).get("wspd", 0)
+            wind_gust = obs.get(unit_root, {}).get("gust", 0)
+            wind_chill = obs.get(unit_root, {}).get("wc", temp)
             pressure_tendency = obs.get("ptend", 2)
 
             # Write each location as separate block using primary county
@@ -115,9 +117,7 @@ def write_conditions_to_file(tecci_locations, api_key, units):
             f.write("    \n")
             f.write("twccommon.Log.info(\"i1DT - You are receiving IntelliStar 1 data from Rainwater WX.\")\n")
             f.write("    \n")
-            #f.write("if (not areaList):\n")
-            #f.write("    abortMsg()\n")
-            #f.write("    \n")
+            f.write("if not areaList:\n    abortMsg()\n\n")
             f.write("for area in areaList:\n")
             f.write("    b = twc.Data()\n")
             f.write(f"    b.skyCondition = {sky_condition}\n")
