@@ -340,31 +340,10 @@ for area in areaList:
 
 
 for area in areaList:
-    forecastTime_1_1 = 1763895600
-    b_1_1 = twc.Data()
-    
-    b_1_1.phrase = 'Partly cloudy. High 4C. Winds W at 10 to 15 km/h.'
-    
-    b_1_1.skyCondition = 3000
-    b_1_1.temp = 4
-    # Vocal key for those trying to recreate: D2:DA02:X3000300022:S300021:TL77:W06R02
-    wxdata.setDaypartData(
-        loc='71866002',
-        type='textFcst',
-        data=b_1_1,
-        validTime=1763895600,
-        numDayparts=4,
-        expiration=int(1763895600 + 43200)
-    )
-    twccommon.Log.info("i1DG - Daypart forecast set for " + area + " at " + str(forecastTime_1_1))
-        
-
-
-for area in areaList:
     forecastTime_1_2 = 1763938800
     b_1_2 = twc.Data()
     
-    b_1_2.phrase = 'Partly cloudy skies this evening will become overcast overnight. Low -9C. Winds W at 10 to 15 km/h.'
+    b_1_2.phrase = 'Partly cloudy this evening, then becoming cloudy after midnight. Low -9C. Winds W at 10 to 15 km/h.'
     
     b_1_2.skyCondition = 2700
     b_1_2.temp = -9
@@ -385,7 +364,7 @@ for area in areaList:
     forecastTime_2_1 = 1763982000
     b_2_1 = twc.Data()
     
-    b_2_1.phrase = 'Cloudy. High -3C. Winds light and variable.'
+    b_2_1.phrase = 'Overcast. High -3C. Winds light and variable.'
     
     b_2_1.skyCondition = 2600
     b_2_1.temp = -3
@@ -427,7 +406,7 @@ for area in areaList:
     forecastTime_3_1 = 1764068400
     b_3_1 = twc.Data()
     
-    b_3_1.phrase = 'Cloudy skies early, followed by partial clearing. High around -5C. Winds WNW at 10 to 15 km/h.'
+    b_3_1.phrase = 'Cloudy early with partial sunshine expected late. High around -5C. Winds WNW at 10 to 15 km/h.'
     
     b_3_1.skyCondition = 9003
     b_3_1.temp = -5
@@ -469,7 +448,7 @@ for area in areaList:
     forecastTime_4_1 = 1764154800
     b_4_1 = twc.Data()
     
-    b_4_1.phrase = 'Mostly cloudy skies early, then partly cloudy in the afternoon. High -7C. Winds light and variable.'
+    b_4_1.phrase = 'Considerable clouds early. Some decrease in clouds later in the day. High -7C. Winds light and variable.'
     
     b_4_1.skyCondition = 3000
     b_4_1.temp = -7
@@ -511,7 +490,7 @@ for area in areaList:
     forecastTime_5_1 = 1764241200
     b_5_1 = twc.Data()
     
-    b_5_1.phrase = 'Partly to mostly cloudy. High -8C. Winds light and variable.'
+    b_5_1.phrase = 'Mostly cloudy skies early, then partly cloudy in the afternoon. High -8C. Winds light and variable.'
     
     b_5_1.skyCondition = 3000
     b_5_1.temp = -8
@@ -553,7 +532,7 @@ for area in areaList:
     forecastTime_6_1 = 1764327600
     b_6_1 = twc.Data()
     
-    b_6_1.phrase = 'Cloudy skies. High -9C. Winds N at 10 to 15 km/h.'
+    b_6_1.phrase = 'Overcast. High -9C. Winds N at 10 to 15 km/h.'
     
     b_6_1.skyCondition = 2600
     b_6_1.temp = -9
@@ -574,7 +553,7 @@ for area in areaList:
     forecastTime_6_2 = 1764370800
     b_6_2 = twc.Data()
     
-    b_6_2.phrase = 'Mainly cloudy. Low -16C. Winds light and variable.'
+    b_6_2.phrase = 'Mostly cloudy. Low -16C. Winds light and variable.'
     
     b_6_2.skyCondition = 2700
     b_6_2.temp = -16
@@ -595,7 +574,7 @@ for area in areaList:
     forecastTime_7_1 = 1764414000
     b_7_1 = twc.Data()
     
-    b_7_1.phrase = 'Considerable cloudiness. High around -10C. Winds NW at 10 to 15 km/h.'
+    b_7_1.phrase = 'Considerable cloudiness. High near -10C. Winds NW at 10 to 15 km/h.'
     
     b_7_1.skyCondition = 2800
     b_7_1.temp = -10
@@ -616,7 +595,7 @@ for area in areaList:
     forecastTime_7_2 = 1764457200
     b_7_2 = twc.Data()
     
-    b_7_2.phrase = 'A few clouds. Low around -20C. Winds WNW at 10 to 15 km/h.'
+    b_7_2.phrase = 'Partly cloudy skies. Low near -20C. Winds WNW at 10 to 15 km/h.'
     
     b_7_2.skyCondition = 2900
     b_7_2.temp = -20
@@ -637,7 +616,7 @@ for area in areaList:
     forecastTime_8_1 = 1764500400
     b_8_1 = twc.Data()
     
-    b_8_1.phrase = 'Partly cloudy. High -14C. Winds SW at 15 to 25 km/h.'
+    b_8_1.phrase = 'Sunshine and clouds mixed. High -14C. Winds SW at 15 to 25 km/h.'
     
     b_8_1.skyCondition = 3000
     b_8_1.temp = -14
@@ -658,7 +637,7 @@ for area in areaList:
     forecastTime_8_2 = 1764543600
     b_8_2 = twc.Data()
     
-    b_8_2.phrase = 'A few clouds from time to time. Low -18C. Winds SW at 10 to 15 km/h.'
+    b_8_2.phrase = 'Partly cloudy. Low -18C. Winds SW at 10 to 15 km/h.'
     
     b_8_2.skyCondition = 2900
     b_8_2.temp = -18
@@ -994,7 +973,7 @@ for area in areaList:
     forecastTime_1_2 = 1763938800
     b_1_2 = twc.Data()
     
-    b_1_2.phrase = 'Mostly clear this evening. Fog developing late. Low 3C. Winds NE at 10 to 15 km/h.'
+    b_1_2.phrase = 'Mostly clear this evening. Fog developing late. Low 3C. Winds ENE at 10 to 15 km/h.'
     
     b_1_2.skyCondition = 9300
     b_1_2.temp = 3
@@ -1015,10 +994,10 @@ for area in areaList:
     forecastTime_2_1 = 1763982000
     b_2_1 = twc.Data()
     
-    b_2_1.phrase = 'Cloudy skies with some morning fog. High 16C. Winds light and variable.'
+    b_2_1.phrase = 'Morning fog, then cloudy in the afternoon. High near 15C. Winds light and variable.'
     
     b_2_1.skyCondition = 9203
-    b_2_1.temp = 16
+    b_2_1.temp = 15
     # Vocal key for those trying to recreate: D2:DA02:X3000300022:S300021:TL77:W06R02
     wxdata.setDaypartData(
         loc='72423000',
@@ -1036,7 +1015,7 @@ for area in areaList:
     forecastTime_2_2 = 1764025200
     b_2_2 = twc.Data()
     
-    b_2_2.phrase = 'Rain showers in the evening will evolve into a more steady rain overnight. Low 11C. Winds SSE at 10 to 15 km/h. Chance of rain 90%. Rainfall around 12mm.'
+    b_2_2.phrase = 'Showers early, becoming a steady rain late. Low 11C. Winds SSE at 10 to 15 km/h. Chance of rain 90%. Rainfall around 12mm.'
     
     b_2_2.skyCondition = 1200
     b_2_2.temp = 11
@@ -1057,9 +1036,9 @@ for area in areaList:
     forecastTime_3_1 = 1764068400
     b_3_1 = twc.Data()
     
-    b_3_1.phrase = 'Cloudy with occasional rain showers. High 16C. Winds SSW at 10 to 15 km/h. Chance of rain 70%.'
+    b_3_1.phrase = 'Occasional rain tapering to a few showers late. High 16C. Winds SSW at 10 to 15 km/h. Chance of rain 70%.'
     
-    b_3_1.skyCondition = 1100
+    b_3_1.skyCondition = 1200
     b_3_1.temp = 16
     # Vocal key for those trying to recreate: D2:DA02:X3000300022:S300021:TL77:W06R02
     wxdata.setDaypartData(
@@ -1078,7 +1057,7 @@ for area in areaList:
     forecastTime_3_2 = 1764111600
     b_3_2 = twc.Data()
     
-    b_3_2.phrase = 'Cloudy skies. Low 7C. Winds WSW at 15 to 25 km/h.'
+    b_3_2.phrase = 'Cloudy. Low 7C. Winds WSW at 15 to 25 km/h.'
     
     b_3_2.skyCondition = 2600
     b_3_2.temp = 7
@@ -1099,7 +1078,7 @@ for area in areaList:
     forecastTime_4_1 = 1764154800
     b_4_1 = twc.Data()
     
-    b_4_1.phrase = 'Intervals of clouds and sunshine. High near 10C. Winds W at 15 to 30 km/h.'
+    b_4_1.phrase = 'Partly cloudy. High near 10C. Winds W at 15 to 30 km/h.'
     
     b_4_1.skyCondition = 3000
     b_4_1.temp = 10
@@ -1120,7 +1099,7 @@ for area in areaList:
     forecastTime_4_2 = 1764198000
     b_4_2 = twc.Data()
     
-    b_4_2.phrase = 'Partly cloudy skies. Low -2C. Winds W at 10 to 15 km/h.'
+    b_4_2.phrase = 'Mostly cloudy skies early will become partly cloudy late. Low -2C. Winds W at 10 to 15 km/h.'
     
     b_4_2.skyCondition = 2900
     b_4_2.temp = -2
@@ -1141,10 +1120,10 @@ for area in areaList:
     forecastTime_5_1 = 1764241200
     b_5_1 = twc.Data()
     
-    b_5_1.phrase = 'Mostly sunny. High 4C. Winds WNW at 15 to 25 km/h.'
+    b_5_1.phrase = 'Sunny skies. High around 5C. Winds WNW at 15 to 25 km/h.'
     
     b_5_1.skyCondition = 3200
-    b_5_1.temp = 4
+    b_5_1.temp = 5
     # Vocal key for those trying to recreate: D2:DA02:X3000300022:S300021:TL77:W06R02
     wxdata.setDaypartData(
         loc='72423000',
@@ -1162,7 +1141,7 @@ for area in areaList:
     forecastTime_5_2 = 1764284400
     b_5_2 = twc.Data()
     
-    b_5_2.phrase = 'A mostly clear sky. Low near -5C. Winds WNW at 10 to 15 km/h.'
+    b_5_2.phrase = 'Clear skies. Low near -5C. Winds WNW at 10 to 15 km/h.'
     
     b_5_2.skyCondition = 3100
     b_5_2.temp = -5
@@ -1204,7 +1183,7 @@ for area in areaList:
     forecastTime_6_2 = 1764370800
     b_6_2 = twc.Data()
     
-    b_6_2.phrase = 'Partly cloudy early with increasing clouds overnight. Low -2C. Winds light and variable.'
+    b_6_2.phrase = 'Partly to mostly cloudy. Low -2C. Winds light and variable.'
     
     b_6_2.skyCondition = 2900
     b_6_2.temp = -2
@@ -1225,7 +1204,7 @@ for area in areaList:
     forecastTime_7_1 = 1764414000
     b_7_1 = twc.Data()
     
-    b_7_1.phrase = 'Cloudy early with showers for the afternoon hours. High 6C. Winds SE at 10 to 15 km/h. Chance of rain 40%.'
+    b_7_1.phrase = 'Cloudy early with showers for the afternoon hours. High 6C. Winds light and variable. Chance of rain 40%.'
     
     b_7_1.skyCondition = 7103
     b_7_1.temp = 6
@@ -1267,7 +1246,7 @@ for area in areaList:
     forecastTime_8_1 = 1764500400
     b_8_1 = twc.Data()
     
-    b_8_1.phrase = 'Cloudy with showers. High 11C. Winds S at 10 to 15 km/h. Chance of rain 60%.'
+    b_8_1.phrase = 'Cloudy with occasional rain showers. High 11C. Winds S at 10 to 15 km/h. Chance of rain 60%.'
     
     b_8_1.skyCondition = 1100
     b_8_1.temp = 11
@@ -1288,7 +1267,7 @@ for area in areaList:
     forecastTime_8_2 = 1764543600
     b_8_2 = twc.Data()
     
-    b_8_2.phrase = 'Cloudy with showers. Low 9C. Winds S at 10 to 15 km/h. Chance of rain 60%.'
+    b_8_2.phrase = 'Overcast with rain showers at times. Low 9C. Winds S at 10 to 15 km/h. Chance of rain 60%.'
     
     b_8_2.skyCondition = 1100
     b_8_2.temp = 9
@@ -1624,10 +1603,10 @@ for area in areaList:
     forecastTime_1_2 = 1763938800
     b_1_2 = twc.Data()
     
-    b_1_2.phrase = 'Some clouds. Low -9C. Winds W at 10 to 15 km/h.'
+    b_1_2.phrase = 'Partly cloudy skies. Low -8C. Winds W at 10 to 15 km/h.'
     
     b_1_2.skyCondition = 2900
-    b_1_2.temp = -9
+    b_1_2.temp = -8
     # Vocal key for those trying to recreate: D2:DA02:X3000300022:S300021:TL77:W06R02
     wxdata.setDaypartData(
         loc='71869000',
@@ -1645,9 +1624,9 @@ for area in areaList:
     forecastTime_2_1 = 1763982000
     b_2_1 = twc.Data()
     
-    b_2_1.phrase = 'Mostly cloudy skies. High -3C. Winds WNW at 10 to 15 km/h.'
+    b_2_1.phrase = 'Cloudy. High -3C. Winds WNW at 10 to 15 km/h.'
     
-    b_2_1.skyCondition = 2800
+    b_2_1.skyCondition = 2600
     b_2_1.temp = -3
     # Vocal key for those trying to recreate: D2:DA02:X3000300022:S300021:TL77:W06R02
     wxdata.setDaypartData(
@@ -1666,7 +1645,7 @@ for area in areaList:
     forecastTime_2_2 = 1764025200
     b_2_2 = twc.Data()
     
-    b_2_2.phrase = 'Cloudy skies. Low -8C. Winds light and variable.'
+    b_2_2.phrase = 'Cloudy. Low -8C. Winds light and variable.'
     
     b_2_2.skyCondition = 2600
     b_2_2.temp = -8
@@ -1687,7 +1666,7 @@ for area in areaList:
     forecastTime_3_1 = 1764068400
     b_3_1 = twc.Data()
     
-    b_3_1.phrase = 'Cloudy skies early, then partly cloudy in the afternoon. High around -5C. Winds WNW at 10 to 15 km/h.'
+    b_3_1.phrase = 'Cloudy early with partial sunshine expected late. High around -5C. Winds WNW at 10 to 15 km/h.'
     
     b_3_1.skyCondition = 9003
     b_3_1.temp = -5
@@ -1708,10 +1687,10 @@ for area in areaList:
     forecastTime_3_2 = 1764111600
     b_3_2 = twc.Data()
     
-    b_3_2.phrase = 'Considerable cloudiness. Low -12C. Winds light and variable.'
+    b_3_2.phrase = 'Mainly cloudy. Low -13C. Winds light and variable.'
     
     b_3_2.skyCondition = 2700
-    b_3_2.temp = -12
+    b_3_2.temp = -13
     # Vocal key for those trying to recreate: D2:DA02:X3000300022:S300021:TL77:W06R02
     wxdata.setDaypartData(
         loc='71869000',
@@ -1729,7 +1708,7 @@ for area in areaList:
     forecastTime_4_1 = 1764154800
     b_4_1 = twc.Data()
     
-    b_4_1.phrase = 'Sunshine and clouds mixed. High -7C. Winds light and variable.'
+    b_4_1.phrase = 'Intervals of clouds and sunshine. High -7C. Winds light and variable.'
     
     b_4_1.skyCondition = 3000
     b_4_1.temp = -7
@@ -1750,7 +1729,7 @@ for area in areaList:
     forecastTime_4_2 = 1764198000
     b_4_2 = twc.Data()
     
-    b_4_2.phrase = 'Partly cloudy early with increasing clouds overnight. Low -11C. Winds light and variable.'
+    b_4_2.phrase = 'Partly to mostly cloudy. Low -11C. Winds light and variable.'
     
     b_4_2.skyCondition = 2900
     b_4_2.temp = -11
@@ -1792,7 +1771,7 @@ for area in areaList:
     forecastTime_5_2 = 1764284400
     b_5_2 = twc.Data()
     
-    b_5_2.phrase = 'Cloudy. Low -13C. Winds light and variable.'
+    b_5_2.phrase = 'Overcast. Low -13C. Winds light and variable.'
     
     b_5_2.skyCondition = 2600
     b_5_2.temp = -13
@@ -1813,7 +1792,7 @@ for area in areaList:
     forecastTime_6_1 = 1764327600
     b_6_1 = twc.Data()
     
-    b_6_1.phrase = 'Mainly cloudy. High around -10C. Winds NNW at 10 to 15 km/h.'
+    b_6_1.phrase = 'Mostly cloudy skies. High near -10C. Winds NNW at 10 to 15 km/h.'
     
     b_6_1.skyCondition = 2800
     b_6_1.temp = -10
@@ -1834,7 +1813,7 @@ for area in areaList:
     forecastTime_6_2 = 1764370800
     b_6_2 = twc.Data()
     
-    b_6_2.phrase = 'Partly to mostly cloudy. Low -16C. Winds light and variable.'
+    b_6_2.phrase = 'Mostly cloudy skies early, then partly cloudy after midnight. Low -16C. Winds light and variable.'
     
     b_6_2.skyCondition = 2900
     b_6_2.temp = -16
@@ -1855,10 +1834,10 @@ for area in areaList:
     forecastTime_7_1 = 1764414000
     b_7_1 = twc.Data()
     
-    b_7_1.phrase = 'Intervals of clouds and sunshine. High -11C. Winds NW at 10 to 15 km/h.'
+    b_7_1.phrase = 'Sunshine and clouds mixed. High near -10C. Winds NW at 10 to 15 km/h.'
     
     b_7_1.skyCondition = 3000
-    b_7_1.temp = -11
+    b_7_1.temp = -10
     # Vocal key for those trying to recreate: D2:DA02:X3000300022:S300021:TL77:W06R02
     wxdata.setDaypartData(
         loc='71869000',
@@ -1876,7 +1855,7 @@ for area in areaList:
     forecastTime_7_2 = 1764457200
     b_7_2 = twc.Data()
     
-    b_7_2.phrase = 'A few clouds from time to time. Low around -20C. Winds WNW at 10 to 15 km/h.'
+    b_7_2.phrase = 'A few clouds. Low around -20C. Winds WNW at 10 to 15 km/h.'
     
     b_7_2.skyCondition = 2900
     b_7_2.temp = -20
@@ -1897,10 +1876,10 @@ for area in areaList:
     forecastTime_8_1 = 1764500400
     b_8_1 = twc.Data()
     
-    b_8_1.phrase = 'Partly cloudy. High -14C. Winds WSW at 10 to 15 km/h.'
+    b_8_1.phrase = 'Partly cloudy. High around -15C. Winds WSW at 10 to 15 km/h.'
     
     b_8_1.skyCondition = 3000
-    b_8_1.temp = -14
+    b_8_1.temp = -15
     # Vocal key for those trying to recreate: D2:DA02:X3000300022:S300021:TL77:W06R02
     wxdata.setDaypartData(
         loc='71869000',
@@ -1918,7 +1897,7 @@ for area in areaList:
     forecastTime_8_2 = 1764543600
     b_8_2 = twc.Data()
     
-    b_8_2.phrase = 'A few clouds. Low -19C. Winds WSW at 10 to 15 km/h.'
+    b_8_2.phrase = 'A few clouds. Low -19C. Winds SW at 10 to 15 km/h.'
     
     b_8_2.skyCondition = 2900
     b_8_2.temp = -19

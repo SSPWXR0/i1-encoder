@@ -4,9 +4,10 @@ import re
 import json
 import time
 import threading
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import asyncio
 import shutil
+import ntplib
 
 import cc
 import hourly
@@ -19,6 +20,7 @@ with open("config.json", "r") as f:
     conf = json.load(f)
     ssh_config = conf.get("ssh", {})
     units_config = conf.get("units", {})
+    ntp_config = conf.get("ntp", {})
 
 ssh_connected = False
 ssh_client = None
@@ -67,7 +69,31 @@ def send_command(command):
     shell.send(command + "\n")
 
 def sync_time():
-    now = datetime.now()
+    client = ntplib.NTPClient()
+    attempt = 0
+    ntp_now = None
+
+    # Support either a list of NTP servers or a single server string in config
+    servers = ntp_config if isinstance(ntp_config, (list, tuple)) else [ntp_config]
+
+    while attempt < len(servers):
+        server = servers[attempt]
+        try:
+            ntp_now = client.request(server)
+            print(f"i1DT - Sent a request to NTP server {server}")
+            break
+        except Exception as e:
+            print(f"i1DT - Could not query NTP server {server}: {e}")
+            attempt += 1
+            time.sleep(1)
+
+    if ntp_now is not None and hasattr(ntp_now, "tx_time"):
+        # use NTP time if available (timezone-aware UTC)
+        now = datetime.fromtimestamp(ntp_now.tx_time, tz=timezone.utc)
+    else:
+        # fall back to local UTC time (timezone-aware)
+        now = datetime.now(timezone.utc)
+
     freebsd_timestamp = now.strftime("%m%d%H%M%Y.%S") # Generate current FreeBSD timestamp
     print("i1DT - Syncing Time, Timestamp is:" + freebsd_timestamp)
     send_command("date " + freebsd_timestamp) # Sync the time of the VM
@@ -117,6 +143,7 @@ def get_config():
     config_data = {
         "ssh": ssh_config,
         "units": units_config,
+        "ntp": ntp_config,
         "coop": {"locations": remove_duplicates_preserve_order(locations)},
         "tecci": {"locations": remove_duplicates_preserve_order(locations_tecci)}
     }

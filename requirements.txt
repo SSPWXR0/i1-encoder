@@ -8,3 +8,4 @@ coloredlogs
 wand
 bit
 asyncio
+ntplib

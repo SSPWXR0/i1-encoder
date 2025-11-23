@@ -6,6 +6,10 @@
     "password": "i1root"
   },
   "units": "m",
+  "ntp": [
+    "time.chu.nrc.ca",
+    "0.ca.pool.ntp.org"
+  ],
   "coop": {
     "locations": [
       "71866000",
